@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{% load static %}{% load thumbnail %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="row my-5">
+            <div class="col-12 head-text mx-auto">
+                <h1 class="text-center fw-bold">Космическое агентство</h1>
+                <h6 class="text-center fw-light my-4">
+                    Национальное управление по аэронавтике и исследованию космического пространства — ведомство,
+                    относящееся
+                    к федеральному правительству США и подчиняющееся непосредственно президенту США.
+                </h6>
+            </div>
+        </div>
+        <div id="advantages" class="row">
+            <div class="col-12 col-lg-6 text-center">
+                <div class="row row-cols-2">
+                    <div class="col p-5">
+                        <img src="{% static 'img/text_block/shuttle.svg' %}" alt="Shuttle">
+                        <p>Спейс шаттлы — пилотируемые корабли</p>
+                    </div>
+                    <div class="col p-5">
+                        <img src="{% static 'img/text_block/telescope.svg' %}" alt="Telescope">
+                        <p>Лучшее телескопическое оборудование</p>
+                    </div>
+                    <div class="col p-5">
+                        <img src="{% static 'img/text_block/moon_star.svg' %}" alt="Moon star">
+                        <p>Целимся на Луну и Марс</p>
+                    </div>
+                    <div class="col p-5">
+                        <img src="{% static 'img/text_block/medal.svg' %}" alt="Medal">
+                        <p>Золотая медаль по научным исследованиям</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+                <img src="{% static 'img/text_block/sky.jpg' %}" alt="sky" class="text-block-image rounded-5 shadow">
+            </div>
+        </div>
+    </div>
+
+    <div id="photos" class="carousel-back-color">
+        <h1 class="text-center nav-text-color fw-bold">ФОТОГРАФИИ</h1>
+        <div class="slider slider-for">
+            {% for image in images %}
+                <div>
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="carousel-image shadow rounded-5">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="slider slider-nav">
+            {% for image in images %}
+                <div>
+                    <img src="{{ image.image|thumbnail_url:'my_preview_1' }}" alt="{{ image.title }}"
+                         class="carousel-image-thumbnail shadow rounded-5">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% block scripts %}
+        <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
+        <script type="text/javascript" src="{% static 'js/slick_carousel.js' %}"></script>
+    {% endblock %}
+{% endblock %}
