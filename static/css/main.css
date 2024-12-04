@@ -52,6 +52,10 @@ html, body {
     max-width: 800px;
 }
 
+.slick-track, .slick-list  {
+    height: 100% !important;
+}
+
 .carousel-image-thumbnail {
     width: 100% !important;
     max-height: 200px;
